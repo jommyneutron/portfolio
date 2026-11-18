@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tommy Vo's Georgia Tech engineering portfolio. Case studies in autonomous robotics, embedded systems, and experimental aircraft.">
+<meta name="theme-color" content="#f3f2eb">
+<title>Tommy Vo | Engineering Portfolio</title>
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="header wrap">
+  <a class="brand" href="#top">Tommy Vo<span>Engineering portfolio</span></a>
+  <nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+</header>
+<main id="content">
+  <section class="hero wrap" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="dot"></span> Mechanical Engineering · Georgia Tech</p>
+      <h1 id="hero-title">Robotics &amp;<br>embedded systems<span>.</span></h1>
+      <p class="intro">I’m Tommy Vo. I build and test autonomous systems, with a focus on embedded control, computer vision, and integrating hardware with software.</p>
+      <a class="button" href="#projects">Explore projects</a>
+    </div>
+    <figure class="hero-figure">
+      <img src="assets/arcs.webp" alt="ARCS robot with two ducted fans on a concrete wall test rig" width="484" height="332" fetchpriority="high">
+      <figcaption><span>ARCS prototype</span><span>Vertical wall testing</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="project-section wrap" id="projects" aria-labelledby="projects-title">
+    <div class="section-line"><h2 id="projects-title">Selected projects</h2><span>Georgia Tech · Engineering case studies</span></div>
+    <div class="project-grid">
+      <a class="project-card" href="#competition">
+        <div class="thumbnail cad"><img src="assets/competition-card.webp" alt="" width="1058" height="630"></div>
+        <div class="card-text"><p class="eyebrow">ME 2110 · Embedded controls</p><h3>Autonomous Competition Robot</h3><p>Teensy control, pneumatic actuation, and a motorized telescoping pole.</p><span class="card-action">View case study</span></div>
+      </a>
+      <a class="project-card" href="#arcs">
+        <div class="thumbnail"><img src="assets/arcs.webp" alt="" width="484" height="332"></div>
+        <div class="card-text"><p class="eyebrow">ARCS · Robotics</p><h3>Autonomous Wall-Climbing Robot</h3><p>Power distribution, fan-assisted wall adhesion, and YOLO crack detection.</p><span class="card-action">View case study</span></div>
+      </a>
+      <a class="project-card" href="#eras">
+        <div class="thumbnail"><img src="assets/eras.webp" alt="" width="1206" height="540"></div>
+        <div class="card-text"><p class="eyebrow">ERAS · Avionics</p><h3>Ionic Wind Aircraft</h3><p>Controlled launch testing, embedded avionics, and OpenCV flight tracking.</p><span class="card-action">View case study</span></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="case-studies">
+    <article class="case wrap" id="competition" aria-labelledby="competition-title">
+      <div class="case-heading"><div><p class="eyebrow">Georgia Tech ME 2110 · Team project</p><h2 id="competition-title">Autonomous Competition Robot</h2></div><div class="result"><strong>19th</strong><span>out of about 80 teams</span></div></div>
+      <div class="case-layout">
+        <div class="case-copy">
+          <h3>Challenge</h3><p>Build an autonomous robot that could complete several themed tasks within a strict size, cost, and time budget. The robot had to coordinate multiple mechanisms and handle unexpected sensor signals.</p>
+          <h3>My contribution</h3><p>I wrote the Teensy’s C++ state machine to coordinate motors, pneumatic actuators, solenoids, and limit switches. I designed and assembled a cascading telescoping pole with a motor-driven winch, using SolidWorks and Onshape. I also troubleshot power distribution, MOSFET driver rails, and electrical noise.</p>
+          <h3>Design and testing</h3><p>I added limit-switch debouncing and logic to handle out-of-sequence inputs. Tests showed that several actions needed to run in a fixed order after one trigger, so I used <code>millis()</code> to time those actions within the state machine. I chose a cascading pole to shorten extension time and simplify the string path.</p>
+          <h3>Outcome</h3><p>We tested against our specification sheet across three sprints. The build cost $26.37, and the robot averaged about 34 seconds of task time before placing 19th in the final competition.</p>
+        </div>
+        <aside class="evidence" aria-label="Competition robot visuals">
+          <figure><img src="assets/competition-card.webp" alt="Annotated CAD assembly showing the robot’s air tank, drawbridges, winch, and telescoping pole" width="1058" height="630" loading="lazy"><figcaption>Competition robot CAD assembly</figcaption></figure>
+          <details><summary>View design evidence</summary><div class="evidence-links"><a href="assets/quality-matrix.webp">House of Quality matrix</a><a href="competition-evidence.html">Specifications and concept selection</a></div></details>
+        </aside>
+      </div>
+    </article>
+
+    <article class="case wrap" id="arcs" aria-labelledby="arcs-title">
+      <div class="case-heading"><div><p class="eyebrow">ARCS · Project manager and electrical team lead</p><h2 id="arcs-title">Autonomous Wall-Climbing Robot</h2></div><div class="result"><strong>5 of 7</strong><span>major cracks detected and reached</span></div></div>
+      <div class="case-layout">
+        <div class="case-copy">
+          <h3>Challenge</h3><p>In three weeks, build a robot that could adhere to a vertical concrete wall, locate cracks, navigate to them, and fill them. Two electric ducted fans provided adhesion, making fan power and battery mass central to the design.</p>
+          <h3>My contribution</h3><p>I led the electrical team and coordinated subteams through Jira. I designed KiCad power distribution schematics with buck converters, built a current budget for nominal and peak loads, and helped tune the motor PID controllers and integrate ESP32 wireless communication. The robot used Raspberry Pi and YOLO segmentation for crack detection.</p>
+          <h3>Design and testing</h3><p>I compared LiPo configurations by mass, voltage, capacity, discharge rating, and estimated runtime. We selected 4S 1500 mAh and 6S 1300 mAh packs. Their labeled 120C ratings implied theoretical discharge currents of 180 A and 156 A. We tested the robot on a vertical concrete rig with physical and software emergency stops.</p>
+          <h3>Outcome</h3><p>The robot detected and navigated to five of seven major cracks. The filling mechanism worked under manual control. Calibration between navigation and the repair mechanism limited fully autonomous filling.</p>
+        </div>
+        <aside class="evidence" aria-label="Wall-climbing robot visuals">
+          <figure><a href="assets/arcs-test.webp"><img class="portrait" src="assets/arcs-test.webp" alt="Team members supervising the robot on a freestanding vertical concrete test rig" width="472" height="839" loading="lazy"></a><figcaption>Vertical concrete test rig</figcaption></figure>
+          <details><summary>View electrical budgets</summary><div class="evidence-links"><a href="assets/arcs-mass.webp">Mass budget sample</a><a href="assets/arcs-current.webp">Current allocation table</a></div></details>
+        </aside>
+      </div>
+    </article>
+
+    <article class="case wrap" id="eras" aria-labelledby="eras-title">
+      <div class="case-heading"><div><p class="eyebrow">ERAS · Test hardware, avionics, and telemetry</p><h2 id="eras-title">Ionic Wind Aircraft</h2></div><div class="result"><strong>3 weeks</strong><span>15-student development team</span></div></div>
+      <div class="case-layout">
+        <div class="case-copy">
+          <h3>Challenge</h3><p>Develop a solid-state aircraft powered by ionic wind. The propulsion system’s low thrust imposed a strict mass budget as we worked to integrate thrust vector control and high-voltage electronics.</p>
+          <h3>My contribution</h3><p>I designed an adjustable launch test stand in Onshape to give the aircraft a controlled initial velocity. I integrated Raspberry Pi and Arduino avionics, used accelerometer and gyroscope data to support thrust vector control, and helped distribute power to the avionics and propulsion electronics. I also built a Python and OpenCV pipeline that tracked an onboard LED to measure position and displacement over time.</p>
+          <h3>Design and testing</h3><p>We used Arduino Uno boards to simplify integration on a three-week schedule and added a relay-based emergency shutoff for the high-voltage propulsion system. As components were added near the front, the aircraft’s center of gravity shifted forward.</p>
+          <h3>Outcome</h3><p>The tests validated the launch stand and optical tracking. The aircraft pitched nose-down and did not sustain flight. The flight data pointed to redistributing mass and refining thrust vector control for the next iteration.</p>
+        </div>
+        <aside class="evidence" aria-label="Ionic wind aircraft visuals">
+          <figure><a href="assets/eras-launch.webp"><img src="assets/eras-launch.webp" alt="Elastic-powered launch stand used to give the aircraft a controlled initial speed" width="524" height="202" loading="lazy"></a><figcaption>Adjustable launch test stand</figcaption></figure>
+          <figure><a href="assets/eras-telemetry.webp"><img src="assets/eras-telemetry.webp" alt="Plot of the onboard LED’s vertical position over time during a powered trial" width="438" height="271" loading="lazy"></a><figcaption>OpenCV flight telemetry</figcaption></figure>
+          <details><summary>View aircraft design evidence</summary><div class="evidence-links"><a href="assets/eras-mass.webp">Aircraft mass budget</a><a href="assets/eras-airfoil.webp">Airfoil comparison</a><a href="assets/eras-tvc.webp">Thrust vector control assembly</a><a href="assets/eras-thrust.webp">Ionic wind test apparatus</a></div></details>
+        </aside>
+      </div>
+    </article>
+  </div>
+</main>
+<footer id="contact">
+  <div class="wrap footer-inner"><div><p class="eyebrow">Contact</p><h2>Tommy Vo</h2><p>Mechanical Engineering · Georgia Institute of Technology</p></div><a class="button" href="mailto:1tommyvo@gmail.com">Email me</a></div>
+</footer>
+</body>
+</html>
